@@ -51,32 +51,26 @@ numbers();
 const canvas = document.querySelector("canvas");
 const ctx = canvas.getContext("2d");
 
-// canvas.width = document.body.clientWidth;
-// canvas.height = document.body.clientHeight;
 canvas.width = 500;
 canvas.height = 500;
 
-ctx.fillStyle = "blue"; //för att sätta färgen man ska rita med
+ctx.fillStyle = "blue";
 ctx.fillRect(250, 250, 20, 20);
 
 document.addEventListener('keydown', function (event) {
     if (event.key == "w" && prevDirY != 1) {
-        //do what you want, example: 
         directionY = -1;
         directionX = 0;
     }
     if (event.key == "s" && prevDirY != -1) {
-        //do what you want, example:
         directionY = 1;
         directionX = 0;
     }
     if (event.key == "a" && prevDirX != 1) {
-        //do what you want, example: 
         directionX = -1;
         directionY = 0;
     }
     if (event.key == "d" && prevDirX != -1) {
-        //do what you want, example: 
         directionX = 1;
         directionY = 0;
     }
@@ -107,16 +101,15 @@ function loop() {
         ctx.fillRect(0, 0, canvas.width, canvas.height)
         ctx.fillStyle = "Black";
 
-        //whatever you want to loop
         Update()
         prevDirX = directionX;
         prevDirY = directionY;
         Collision()
         DrawApple()
-        timeout = setTimeout(loop, 1000 / framerate);//framerate is just how many times per second you want the loop to run, you can replace 1000/framerate with any time in milliseconds
+        timeout = setTimeout(loop, 1000 / framerate); // hur snabbt loopen ska köras
     }
 }
-//example of a function to move a rectangle, assuming the variables are already defined in previous functions or parts of code. this would be placed in the loop function
+
 function Update() {
     snakeParts.push(new part(x, y));
     x += directionX * 20;
@@ -140,7 +133,7 @@ function AddApple() {
 }
 
 function DrawApple() {
-    ctx.fillStyle = "red" //för att sätta färgen man ska rita med
+    ctx.fillStyle = "red"
     ctx.fillRect(AppleX * tileSize, AppleY * tileSize, 20, 20)
 }
 
